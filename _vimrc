@@ -1,3 +1,4 @@
+" To apply the changes :so % 
 execute pathogen#infect()
 call pathogen#helptags()
 
@@ -27,7 +28,33 @@ map ½ $
 cmap ½ $
 imap ½ $
 
+
+" Fuzzy File Search:
+"
+" Search down into subfolders
+" By having the project root as the vimdirectory
+" Provides tab-compleation for all file-realated tasks.
+"
+" NOW WE CAN:
+" - Hit tab to :find by partial match
+" - Use * to make it fuzzy 
+"
+" Tips:
+" :b lets u autocomplete files with tab (to search in buffers).
+
+set path+=**
+set wildmenu
+set wildmode=list:longest,full
+
+
+
+
+" =============================
+" Configuration 
+" =============================
 syntax on		        
+filetype plugin on
+
 set hlsearch  		  " Highlight search
 set incsearch       " Highlight as you type
 set relativenumber  " Line numbers
@@ -35,8 +62,6 @@ set number 		      " when combiner with relative number shows current line numbe
 set tabstop=2 shiftwidth=2 expandtab
 set nowrap
 set backspace=indent,eol,start " Make backspace work
-set wildmenu
-set wildmode=list:longest,full
 set encoding=utf8
 set ruler "show position
 set cmdheight=2 "comand line height
@@ -57,6 +82,8 @@ if has('autocmd')
   autocmd GUIEnter * set visualbell t_vb=
 endif
 
+
+" Formatting of the status bar.
 set laststatus=2
 set statusline=\ %{HasPaste()}%F%m%r%h\ %w\ \ CWD:\ %r%{getcwd()}%h\ \ \ Line:\ %l\ \ Column:\ %c
 
